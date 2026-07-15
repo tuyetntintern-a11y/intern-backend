@@ -5,4 +5,7 @@ app = FastAPI()
 
 @app.get("/api/health")
 def health_check():
-    return "OK"
+    return {
+        "status": "ok",
+        "message": "Backend server is running"
+    }

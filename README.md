@@ -1,35 +1,63 @@
 # Intern Backend
 
+Backend project using FastAPI.
+
 ## Setup
 
-Create a virtual environment:
+### 1. Create virtual environment
 
 ```powershell
 python -m venv venv
 ```
 
-Activate the virtual environment:
+### 2. Activate virtual environment
+
+Windows PowerShell:
 
 ```powershell
 venv\Scripts\activate
 ```
 
-Install dependencies:
+### 3. Install dependencies
 
 ```powershell
-python -m pip install fastapi uvicorn
+pip install fastapi uvicorn
 ```
 
 ## Run Server
+
+Run the following command from the project root directory:
 
 ```powershell
 python -m uvicorn app.server:app --reload
 ```
 
-## Health Check
+Server will start:
 
-Open:
+```
+http://127.0.0.1:8000
+```
 
-```text
+## API
+
+### Health Check
+
+Endpoint:
+
+```
+GET /api/health
+```
+
+URL:
+
+```
 http://127.0.0.1:8000/api/health
+```
+
+Response example:
+
+```json
+{
+  "status": "ok"
+}
 ```
