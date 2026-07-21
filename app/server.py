@@ -20,3 +20,17 @@ def health_check():
         "status": "ok",
         "message": "Backend server is running"
     }
+
+@app.post("/users")
+def create_user(user: dict):
+    return {
+        "message": "created",
+        "data": user
+    }
+@app.put("/users/{user_id}")
+def update_user(user_id: int, user: dict):
+    return {
+        "message": "User updated",
+        "id": user_id,
+        "data": user
+    }
