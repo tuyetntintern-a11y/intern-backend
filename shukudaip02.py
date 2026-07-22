@@ -6,12 +6,14 @@ Ví dụ:
 127 → YES
 333 → NO
 """
-# #bai 1:
-# n = int(input())
-# if n % 10 == 7:
-#     print("YES")
-# else:
-#     print("NO")
+#bai 1:
+def check_last_digit_seven(n):
+    if n % 10 == 7:
+        return "YES"
+    else:
+        return "NO"
+n = int(input())
+print(check_last_digit_seven(n))
 
 
 """
@@ -25,11 +27,13 @@ Ví dụ:
 Kết quả: 20
 """
 # #bai2
-# a = int(input())
-# b = int(input())
-# c = int(input())
-# distances = [abs(a - b), abs(a - c)]
-# print(min(distances))
+def find_closest_distance(a, b, c):
+    distances = [abs(a - b), abs(a - c)]
+    return min(distances)
+a = int(input())
+b = int(input())
+c = int(input())
+print(find_closest_distance(a, b, c))
 
 """
 Bài 3.
@@ -40,8 +44,10 @@ Output: Sum = 37
 """
 
 # #bai3
-# numbers = list(map(int, input().split()))
-# print("Sum =", sum(numbers))
+def calculate_sum(numbers):
+    return sum(numbers)
+numbers = list(map(int, input().split()))
+print("Sum =", calculate_sum(numbers))
 
 
 """
@@ -67,26 +73,26 @@ Chúc mừng bạn đã chiến thắng. Bạn đã đoán đúng sau 2 lượt 
 Bạn đã không may mắn, đây là số 4
 """
 # #bai4
-# import random
-# print("Tôi đang nghĩ một số giữa 1 và 15. Bạn hãy đoán số may mắn đó giúp tôi.")
+import random
+def guess_the_number():
+    random_number = random.randint(1, 15)
+    guess_count = 0
+    print("Tôi đang nghĩ một số giữa 1 và 15. Bạn hãy đoán số may mắn đó giúp tôi.")
 
-# random_number = random.randint(1, 15)
-# guess_count = 0
-# for i in range(5):
-    
-#     guess = int(input("Số may mắn đó là: "))
-#     guess_count += 1
-#     if guess < random_number:
-#         print(f"Số bạn đoán phải lớn hơn {guess}")
-#     elif guess > random_number:
-#         print(f"Số bạn đoán phải nhỏ hơn {guess}")  
-#     else:
-#         print(f"Chúc mừng bạn đã chiến thắng. Bạn đã đoán đúng sau {guess_count} lượt chơi.")
-#         break
-# else:
-#     print(f"Bạn đã không may mắn, đây là số {random_number}")
-    
+    for i in range(5):
+        guess = int(input("Số may mắn đó là: "))
+        guess_count += 1
+        if guess < random_number:
+            print(f"Số bạn đoán phải lớn hơn {guess}")
+        elif guess > random_number:
+            print(f"Số bạn đoán phải nhỏ hơn {guess}")  
+        else:
+            print(f"Chúc mừng bạn đã chiến thắng. Bạn đã đoán đúng sau {guess_count} lượt chơi.")
+            break
+    else:
+        print(f"Bạn đã không may mắn, đây là số {random_number}")   
 
+guess_the_number()
 
 """
 
@@ -102,13 +108,14 @@ Input: 20
 Output: 2000
 """
 # #bai5
-# quantity=int(input())
-# total_cost = quantity * 100
-# if total_cost > 10000:
-#     total_cost *= 0.9  # Apply 10% discount
-#     print(int(total_cost))
-# else:
-#     print(int(total_cost))   
+def calculate_total_cost(quantity):
+    total_cost = quantity * 100
+    if total_cost > 10000:
+        total_cost *= 0.9  # Apply 10% discount
+    return int(total_cost)
+quantity=int(input())
+print(calculate_total_cost(quantity))
+  
 
 
 
@@ -120,14 +127,14 @@ Ví dụ:
 Input: [2, 5, 8, 10, 12]
 Output: 2, 8, 10, 12
 """
-# #bai6
-# numbers = list(map(int, input().split()))
-# even = []
-# for num in numbers:
-#     if num % 2 == 0:
-#         even.append(num)
+#bai6
+def find_even_numbers(numbers):
+    even_numbers = [num for num in numbers if num % 2 == 0]
+    return even_numbers
+numbers = list(map(int, input().split()))
+even = find_even_numbers(numbers)
 
-# print(", ".join(map(str, even)))
+print(", ".join(map(str, even)))
 
 
 """
@@ -140,12 +147,15 @@ Input: [2, 5, 8, 10, 12]
 Output: 12
 """
 # #bai7
-# numbers = list(map(int, input().split()))
-# max_num = numbers[0]
-# for num in numbers:
-#     if num > max_num:
-#         max_num = num
-# print(max_num)
+def find_maximum(numbers):
+    max_num = numbers[0]
+    for num in numbers:
+        if num > max_num:
+            max_num = num
+    return max_num
+numbers = list(map(int, input().split()))
+print(find_maximum(numbers))
+
 
 
 """
@@ -167,12 +177,15 @@ Output:
 """
 
 # #bai8
-# numbers = list(map(int, input().split()))
-# result = []
-# for i in range(len(numbers) - 1):
-#     if numbers[i + 1] >= numbers[i]:
-#         result.append(numbers[i + 1])
-# print(" ".join(map(str, result)))
+def find_greater_than_previous(numbers):
+    result = []
+    for i in range(len(numbers) - 1):
+        if numbers[i + 1] >= numbers[i]:
+            result.append(numbers[i + 1])
+    return result
+numbers = list(map(int, input().split()))
+result = find_greater_than_previous(numbers)
+print(" ".join(map(str, result)))
 
 """
 Bài 9.
@@ -182,12 +195,15 @@ Input: [1, 3, 5, 6, 3, 5, 6, 1]
 Output: [1, 3, 5, 6]
 """
 # #bai9
-# numbers=list(map(int, input().split()))
-# unique_numbers = []
-# for num in numbers:
-#     if num not in unique_numbers:
-#         unique_numbers.append(num)
-# print(", ".join(map(str, unique_numbers)))  
+def remove_duplicates(numbers):
+    unique_numbers = []
+    for num in numbers:
+        if num not in unique_numbers:
+            unique_numbers.append(num)
+    return unique_numbers
+numbers=list(map(int, input().split()))
+unique_numbers = remove_duplicates(numbers)
+print(", ".join(map(str, unique_numbers)))  
 
 
 """
@@ -200,15 +216,18 @@ Output: should get 86, 85
 """
 
 # #bai10
-# numbers = list(map(int, input().split()))
-# first_best = second_best = float('-inf')
-# for num in numbers:
-#     if num > first_best:
-#         second_best = first_best
-#         first_best = num
-#     elif first_best > num > second_best:
-#         second_best = num
-# print(first_best, second_best)
+def find_first_second_best(numbers):
+    first_best = second_best = float('-inf')
+    for num in numbers:
+        if num > first_best:
+            second_best = first_best
+            first_best = num
+        elif first_best > num > second_best:
+            second_best = num
+    return first_best, second_best
+numbers = list(map(int, input().split()))
+largest, second_largest = find_first_second_best(numbers)
+print(largest, second_largest)
 
 
 """
@@ -221,8 +240,11 @@ big_diff([7, 2, 10, 9]) → 8
 big_diff([2, 10, 7, 2]) → 8
 """
 # #bai11
-# numbers = list(map(int, input().split()))
-# print(max(numbers) - min(numbers))
+def find_difference(numbers):
+    return max(numbers) - min(numbers)
+
+numbers = list(map(int, input().split()))
+print(find_difference(numbers))
 
 
 
@@ -233,11 +255,16 @@ nằm trong khoảng 100 cho đến 1000 (tính cả 100 và 1000).
 Kết quả: In trên một dòng và cách nhau bởi dấu phẩy.
 """
 # ##bai12
-# results = []
-# for i in range(105, 1001, 7):
-#     if i % 5 != 0:
-#         results.append(i)
-# print(", ".join(map(str, results)))
+def find_numbers_divisible_by_7_not_5(start, end):
+    results = []
+    for i in range(start, end + 1):
+        if i % 7 == 0 and i % 5 != 0:
+            results.append(i)
+    return results  
+
+
+results = find_numbers_divisible_by_7_not_5(100, 1000)
+print(", ".join(map(str, results)))
 
 """
 Bài 13.
@@ -249,17 +276,31 @@ Kết quả:
 2 3 5 7 11
 """
 # #bai13
-# n = int(input())
-# primes = [1, 2]
-# for i in range(3, n, 2):
-#     is_prime = True
-#     for j in range(2, int(i ** 0.5) + 1):
-#         if i % j == 0:
-#             is_prime = False
-#             break
-#     if is_prime:
-#         primes.append(i)
-# print(" ".join(map(str, primes)))
+def find_primes(num):
+    if num < 2:
+        return []
+
+    primes = [2]
+
+    for i in range(3, num + 1, 2):
+        is_prime = True
+
+        for j in primes:
+            if j * j > i:
+                break
+            if i % j == 0:
+                is_prime = False
+                break
+
+        if is_prime:
+            primes.append(i)
+
+    return primes
+
+
+n = int(input())
+primes = find_primes(n)
+print(" ".join(map(str, primes)))
 
 
 
@@ -271,18 +312,20 @@ Kết quả:
 # Không được sử dụng hàm max() và min()
 # """
 # #bai14
-# numbers = [5, 10, 15, 20, 25, 46]
-# max_num = numbers[0]
-# min_num = numbers[0]
+def find_max_min(numbers):
+    max_num = numbers[0]
+    min_num = numbers[0]
+    for num in numbers:
+        if num > max_num:
+            max_num = num
+        if num < min_num:
+            min_num = num
+    return max_num, min_num
 
-# for num in numbers:
-#     if num > max_num:
-#         max_num = num
-#     if num < min_num:
-#         min_num = num
-
-# print("Max:", max_num)
-# print("Min:", min_num)
+numbers = [5, 10, 15, 20, 25, 46]
+max_num, min_num = find_max_min(numbers)
+print("Max:", max_num)
+print("Min:", min_num)
 
 
 
@@ -293,8 +336,11 @@ tích hình tròn.
 """
 #bai15
 import math
+def calculate_circle_properties(radius):
+    perimeter = 2 * math.pi * radius
+    area = math.pi * radius ** 2
+    return perimeter, area
 radius = float(input("Nhập bán kính đường tròn: "))
-perimeter = 2 * math.pi * radius
-area = math.pi * radius ** 2
+perimeter, area = calculate_circle_properties(radius)
 print(f"Chu vi hình tròn: {perimeter}")
 print(f"Diện tích hình tròn: {area}")
