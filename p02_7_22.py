@@ -173,8 +173,8 @@ def city_quiz():
         "What is the capital of Brazil?": "Brasília"
     }
     score = 0
-    attempts = 0
-    max_attempts = 3
+    incorrect_answers = 0
+    max_incorrect_answers = 3
 
     for question, answer in questions.items():
         user_answer = input(question + " ")
@@ -183,8 +183,8 @@ def city_quiz():
             score += 1
         else:
             print(f"Incorrect! The correct answer is {answer}.")
-            attempts += 1
-            if attempts >= max_attempts:
+            incorrect_answers += 1
+            if incorrect_answers >= max_incorrect_answers:
                 print("You've exceeded the maximum number of incorrect attempts. Game over.")
                 break
 
