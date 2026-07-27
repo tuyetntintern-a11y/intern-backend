@@ -42,7 +42,7 @@ divisible by 100
 a year is always a leap year if its number is exactly divisible by 400
 """
 def is_leap_year(year):
-    if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0) :
         return "LEAP"
     else:
         return "COMMON" 
@@ -212,15 +212,14 @@ Tìm số chẵn cuối cùng trong mảng 1 chiều các số nguyên. Nếu m�
 giá trị chẵn thì trả về -1
 """
 def last_even(nums):
-    even = []
-    for n in range(len(nums)):
+    for n in range(len(nums)-1, -1, -1):
         if nums[n] % 2 == 0:
-            even.append(nums[n])
-    if len(even) == 0:
-        return -1
-    return even[-1]
+            return nums[n]
+    return -1
+
+
 nums = list(map(int, input().split()))
-    
+
 print(last_even(nums))
 
 
