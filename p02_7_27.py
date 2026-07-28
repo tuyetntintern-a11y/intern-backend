@@ -27,14 +27,14 @@ def UCLN(x, y):
         x, y = y, x % y
         return x
 """
-# def UCLN(x, y):
-#     while x != y:
+def UCLN(x, y):
+    while x != y:
        
-#         if x >= y:
-#             x = x - y
-#         else:
-#             y = y - x
-#     return x
+        if x >= y:
+            x = x - y
+        else:
+            y = y - x
+    return x
 # x, y= map(int, input().split())
 # print(UCLN(x, y))
 
@@ -48,11 +48,11 @@ Bội số của 6: 6 12 18 24 30 36 .......
 Bội số của 10: 10 20 30 40 ....
 """
 
-# def BCNN(a, b):
-#     x, y = a, b
-#     while b != 0:
-#         a, b = b, a % b
-#     return int((x * y) / a)
+def BCNN(a, b):
+    x, y = a, b
+    while b != 0:
+        a, b = b, a % b
+    return int((x * y) / a)
 # a, b = map(int, input().split())
 # print(BCNN(a, b))
 
@@ -68,11 +68,11 @@ line_length([0, 0], [0, 0]) ➞ 0
 line_length([0, 0], [1, 1]) ➞ 1.41
 """
 
-# def line_length(point1, point2):
-#     x1, y1 = point1
-#     x2, y2 = point2
-#     res = ((x2 - x1)**2 + (y2 - y1)**2)**0.5
-#     return round(res, 2)
+def line_length(point1, point2):
+    x1, y1 = point1
+    x2, y2 = point2
+    res = ((x2 - x1)**2 + (y2 - y1)**2)**0.5
+    return round(res, 2)
 # point1 = list(map(int, input().split()))
 # point2 = list(map(int, input().split()))
 # print(line_length(point1, point2))
@@ -85,12 +85,12 @@ chuỗi. Hàm của bạn sẽ trả về một danh sách tất cả các chỉ
 có chữ in hoa.
 Ví dụ: gọi capital_indexes ("HeLlO") sẽ trả về danh sách [0, 2, 4].
 """
-# def capital_indexes(text):
-#     res = []
-#     for char in range(len(text)):
-#         if text[char].isupper():
-#             res.append(char)
-#     return res
+def capital_indexes(text):
+    res = []
+    for i in range(len(text)):
+        if text[i].isupper():
+            res.append(i)
+    return res
 # text = input()
 # print(capital_indexes(text))
 
@@ -105,12 +105,12 @@ Viết một hàm có tên palindrome kiểm tra tính đối xứng. Hàm trả
 xứng, False nếu không đối xứng.
 """
 
-# def palindrome(text):
-#     for i in range(len(text) // 2):
-#         if text[i] != text[len(text) - 1 - i]:
-#             return False
+def palindrome(text):
+    for i in range(len(text) // 2):
+        if text[i] != text[len(text) - 1 - i]:
+            return False
        
-#     return True
+    return True
 
 # text = input()
 # print(palindrome(text))
@@ -122,11 +122,11 @@ Hãy viết chương trình nhập vào số nguyên dương n. Kiểm tra xem n
 chính phương hay không? (số chính phương là số khi lấy căn bậc 2 có kết quả là
 nguyên). Hãy viết chương trình kiểm tra số chính phương.
 """
-# import math
-# def is_square(n):
-#     if n>= 0 and math.sqrt(n)**2 == n:
-#         return True
-#     return False
+import math
+def is_square(n):
+    if n>= 0 and math.isqrt(n)**2 == n:
+        return True
+    return False
 # n = int(input())
 # print(is_square(n))
 
@@ -144,7 +144,7 @@ def reverse(num):
         num[n] = num[len(num) - 1 - n]
         num[len(num) - 1 - n] = indx
     return "".join(num)
-num = input()
-print(reverse(num))
+# num = input()
+# print(reverse(num))
 
 
