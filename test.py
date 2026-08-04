@@ -53,6 +53,7 @@ thì trả về True, là 'x' thì trả về False.
 def check_matrix(r, c):
     if c == 3 or c == 4 or (r == 3 and ((c == 2) or (c == 5))):
         return True
+    return False
     
 """
 4. Cho 3 số nguyên n, m, r > 0. Trả về dãy số gồm tất cả các số nguyên nhỏ hơn n và khi chia 
@@ -79,17 +80,21 @@ mức độ tham lam của đứa trẻ đó.
 Hãy trả về số lượng lớn nhất các đứa trẻ có thể được làm hài lòng.
 
 """
-def sort_arrayA(arrayA):
-    arrayA_res = arrayA.sorted()
-    return arrayA_res
-def sort_arrayB(arrayB):
-    arrayB_res = arrayB.sorted()
-    return arrayB_res
-def dua_tre_hai_long(arrayA_res, arrayB_res):
-    result = 0
-    for i in arrayA_res:
-        for j in arrayB_res:
-            if arrayB_res[j] >= arrayA_res[i]:
-                result += 1
-    return result
+
+
+def dua_tre_hai_long(arrayA, arrayB):
+    arrayA = sorted(arrayA)
+    arrayB= sorted(arrayB)
+    child = 0
+    count = 0
+
+    for cookie in arrayB:
+        if child < len(arrayA) and cookie >= arrayA[child]:
+            count += 1
+            child += 1
+
+    return count
+                
+
+    
 
