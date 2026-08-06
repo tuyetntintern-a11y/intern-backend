@@ -97,6 +97,7 @@ class BookCreate(BaseModel):
     title: str
     author: str
     year: int
+    summary: str
 
 @app.get("/")
 def root():
@@ -123,6 +124,7 @@ def create_book(payload: BookCreate, db:Session = Depends(get_db)):
     book = Book(title=payload.title,
                 author=payload.author,
                 year=payload.year,
+                summary=payload.summary
                 )
     db.add(book)
     db.commit()
@@ -139,6 +141,7 @@ def update_book(book_id: int, payload: BookCreate, db: Session = Depends(get_db)
     book.title = payload.title
     book.author = payload.author
     book.year = payload.year
+    book.summary = payload.summary
     
     db.commit()
     db.refresh(book)
