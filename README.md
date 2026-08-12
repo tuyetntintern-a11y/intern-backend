@@ -1,63 +1,14 @@
-# Intern Backend
+# Books API — Sample
 
-Backend project using FastAPI.
+Copy toàn bộ nội dung folder này vào nhánh `week2/fastapi-crud-validation`, rồi:
 
-## Setup
-
-### 1. Create virtual environment
-
-```powershell
+```bash
 python -m venv venv
+# activate venv
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
 
-### 2. Activate virtual environment
-
-Windows PowerShell:
-
-```powershell
-venv\Scripts\activate
-```
-
-### 3. Install dependencies
-
-```powershell
-pip install fastapi uvicorn
-```
-
-## Run Server
-
-Run the following command from the project root directory:
-
-```powershell
-python -m uvicorn app.server:app --reload
-```
-
-Server will start:
-
-```
-http://127.0.0.1:8000
-```
-
-## API
-
-### Health Check
-
-Endpoint:
-
-```
-GET /api/health
-```
-
-URL:
-
-```
-http://127.0.0.1:8000/api/health
-```
-
-Response example:
-
-```json
-{
-  "status": "ok"
-}
-```
+- http://127.0.0.1:8000/
+- http://127.0.0.1:8000/admin
+- http://127.0.0.1:8000/docs
