@@ -1,0 +1,62 @@
+@baseUrl = http://127.0.0.1:8000/api/v1
+
+### 1. Tạo Category
+POST {{baseUrl}}/categories/
+Content-Type: application/json
+
+{
+  "name": "Programming"
+}
+
+### 2. Xem danh sách Categories
+GET {{baseUrl}}/categories/
+
+### 3. Xem Category ID 1
+GET {{baseUrl}}/categories/1
+
+### 4. Sửa Category
+PUT {{baseUrl}}/categories/1
+Content-Type: application/json
+
+{
+  "name": "Software Engineering"
+}
+
+### 5. Tạo Book có category_id
+POST {{baseUrl}}/books/
+Content-Type: application/json
+
+{
+  "title": "Clean Code",
+  "year": 2008,
+  "summary": "A handbook of agile software craftsmanship",
+  "author_id": 1,
+  "category_id": 1
+}
+
+### 6. Xem danh sách Books
+GET {{baseUrl}}/books/
+
+### 7. Sửa Book và category_id
+PUT {{baseUrl}}/books/1
+Content-Type: application/json
+
+{
+  "title": "Clean Code Updated",
+  "year": 2008,
+  "summary": "Updated summary",
+  "author_id": 1,
+  "category_id": 1
+}
+
+### 8. Kiểm tra category_id không tồn tại
+POST {{baseUrl}}/books/
+Content-Type: application/json
+
+{
+  "title": "Invalid Category Book",
+  "year": 2026,
+  "summary": null,
+  "author_id": 1,
+  "category_id": 999999
+}
