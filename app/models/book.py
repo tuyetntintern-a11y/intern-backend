@@ -1,6 +1,6 @@
 from sqlalchemy import ForeignKey, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
-from app.database import Base
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from app.db.database import Base
 
 
 class Book(Base):
@@ -12,7 +12,9 @@ class Book(Base):
     summary: Mapped[str] = mapped_column(String(500), nullable=True)
 
     author_id: Mapped[int | None] = mapped_column(
-        ForeignKey("authors.id"), nullable=True
+        ForeignKey("authors.id"), nullable=True)
+    
+    author = relationship("Author", back_populates="books")
 
-    )
+
 
