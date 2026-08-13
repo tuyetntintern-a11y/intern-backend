@@ -27,3 +27,7 @@ def setup_admin(app, engine):
     admin.add_view(BookAdmin)
     
     return admin
+# SQLAdmin  → quản lý dữ liệu, Có thể xem, thêm, sửa và xóa qua giao diện: http://127.0.0.1:8000/admin
+# Alembic   → quản lý cấu trúc database(Thêm cột, Xóa cột, Đổi kiểu dữ liệu, Tạo khóa ngoại mới,...)
+# Model     → mô tả bảng mong muốn
+# create_all → tạo bảng mới lần đầu(Tạo bảng chưa tồn tại.)
