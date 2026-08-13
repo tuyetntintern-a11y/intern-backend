@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session, joinedload
 
-from app.models import Author, Book
+from app.models import Author, Book, Category
 from app.schemas.book import BookCreate, BookRead, BookUpdate
 
 
@@ -14,6 +14,8 @@ def to_book_read(book: Book) -> BookRead:
         summary=book.summary,
         author_id=book.author_id,
         author_name=book.author.name if book.author else None,
+        category_id=book.category_id,
+        category_name=book.category.name if book.category else None,
     )
 
 
@@ -33,13 +35,32 @@ def _ensure_author_exists(
         )
 
 
+def _ensure_category_exists(
+    db: Session,
+    category_id: int | None,
+) -> None:
+    if category_id is None:
+        return
+
+    category = db.get(Category, category_id)
+
+    if category is None:
+        raise HTTPException(
+            status_code=404,
+            detail="Category not found",
+        )
+
+
 def _get_book_model(
     db: Session,
     book_id: int,
 ) -> Book:
     statement = (
         select(Book)
-        .options(joinedload(Book.author))
+        .options(
+            joinedload(Book.author),
+            joinedload(Book.category),
+        )
         .where(Book.id == book_id)
     )
 
@@ -57,7 +78,10 @@ def _get_book_model(
 def list_books(db: Session) -> list[BookRead]:
     statement = (
         select(Book)
-        .options(joinedload(Book.author))
+        .options(
+            joinedload(Book.author),
+            joinedload(Book.category),
+        )
         .order_by(Book.id)
     )
 
@@ -80,12 +104,14 @@ def create_book(
     payload: BookCreate,
 ) -> BookRead:
     _ensure_author_exists(db, payload.author_id)
+    _ensure_category_exists(db, payload.category_id)
 
     book = Book(
         title=payload.title,
         year=payload.year,
         summary=payload.summary,
         author_id=payload.author_id,
+        category_id=payload.category_id,
     )
 
     db.add(book)
@@ -105,11 +131,13 @@ def update_book(
     book = _get_book_model(db, book_id)
 
     _ensure_author_exists(db, payload.author_id)
+    _ensure_category_exists(db, payload.category_id)
 
     book.title = payload.title
     book.year = payload.year
     book.summary = payload.summary
     book.author_id = payload.author_id
+    book.category_id = payload.category_id
 
     db.commit()
     db.refresh(book)
@@ -137,7 +165,10 @@ def list_books_by_author(
 
     statement = (
         select(Book)
-        .options(joinedload(Book.author))
+        .options(
+            joinedload(Book.author),
+            joinedload(Book.category),
+        )
         .where(Book.author_id == author_id)
         .order_by(Book.id)
     )

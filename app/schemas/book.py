@@ -18,6 +18,7 @@ class BookCreate(BaseModel):
     )
 
     author_id: int | None = None
+    category_id: int | None = None
 
 
 class BookUpdate(BaseModel):
@@ -37,6 +38,7 @@ class BookUpdate(BaseModel):
     )
 
     author_id: int | None = None
+    category_id: int | None = None
 
 
 class BookRead(BaseModel):
@@ -46,3 +48,5 @@ class BookRead(BaseModel):
     summary: str | None
     author_id: int | None
     author_name: str | None = None
+    category_id: int | None = None
+    category_name: str | None = None

@@ -16,5 +16,15 @@ class Book(Base):
     
     author = relationship("Author", back_populates="books")
 
+    category_id: Mapped[int | None] = mapped_column(
+    ForeignKey(
+        "categories.id",
+        name="fk_books_category_id_categories",
+    ),
+    nullable=True,
+)
+    
+    category = relationship("Category", back_populates="books")
+
 
 
