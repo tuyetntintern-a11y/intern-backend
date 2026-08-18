@@ -9,7 +9,7 @@ class Book(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     year: Mapped[int] = mapped_column(Integer, nullable=False)
-    summary: Mapped[str] = mapped_column(String(500), nullable=True)
+    summary: Mapped[str | None] = mapped_column(String(500), nullable=True)
 
     author_id: Mapped[int | None] = mapped_column(
         ForeignKey("authors.id"), nullable=True)
