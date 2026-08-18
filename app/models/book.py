@@ -1,5 +1,6 @@
-from sqlalchemy import ForeignKey, Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Integer, String
+from sqlalchemy.orm import Mapped, mapped_column
+
 from app.db.database import Base
 
 
@@ -10,21 +11,3 @@ class Book(Base):
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     year: Mapped[int] = mapped_column(Integer, nullable=False)
     summary: Mapped[str | None] = mapped_column(String(500), nullable=True)
-
-    author_id: Mapped[int | None] = mapped_column(
-        ForeignKey("authors.id"), nullable=True)
-    
-    author = relationship("Author", back_populates="books")
-
-    category_id: Mapped[int | None] = mapped_column(
-    ForeignKey(
-        "categories.id",
-        name="fk_books_category_id_categories",
-    ),
-    nullable=True,
-)
-    
-    category = relationship("Category", back_populates="books")
-
-
-
