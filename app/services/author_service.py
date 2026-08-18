@@ -8,7 +8,7 @@ from app.schemas.author import AuthorCreate, AuthorUpdate
 
 def list_authors(db: Session) -> list[Author]:
     statement = select(Author).order_by(Author.id)
-    return list(db.scalars(statement).all())
+    return db.scalars(statement).all()
 
 def get_author(db: Session, author_id: int) -> Author:
     author = db.get(Author, author_id)

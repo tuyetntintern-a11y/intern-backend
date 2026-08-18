@@ -140,7 +140,6 @@ def update_book(
     book.category_id = payload.category_id
 
     db.commit()
-    db.refresh(book)
 
     updated_book = _get_book_model(db, book.id)
 
