@@ -9,7 +9,7 @@ from app.schemas.category import CategoryCreate, CategoryUpdate
 def list_categories(db: Session) -> list[Category]:
     statement = select(Category).order_by(Category.id)
 
-    return list(db.scalars(statement).all())
+    return db.scalars(statement).all()
 
 
 def get_category(
